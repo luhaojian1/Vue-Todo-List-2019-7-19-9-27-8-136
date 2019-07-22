@@ -1,6 +1,6 @@
-# vue-todo-list-2019-7-19-9-27-8-13
+# vue-todo-list-2019-7-19-9-27-8-136
 
-> todo_list
+> A Vue.js project
 
 ## Build Setup
 

@@ -1,8 +1,8 @@
 {
-  "name": "vue-todo-list-2019-7-19-9-27-8-13",
+  "name": "vue-todo-list-2019-7-19-9-27-8-136",
   "version": "1.0.0",
-  "description": "todo_list",
-  "author": "luhaojian11 <962671114@qq.com>",
+  "description": "A Vue.js project",
+  "author": "luhaojian1 <962671114@qq.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -10,8 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue": "^2.5.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
