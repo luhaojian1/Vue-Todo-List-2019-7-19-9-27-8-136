@@ -1,23 +1,26 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
   <div>
-    <input id="inputInfo" type="text" v-model="toDoInfo">
+    <input class="input-text" id="inputInfo" type="text" v-model="toDoInfo">
     <button id="add" v-on:click="addStatus()">Add</button>
 
     <div>
       <ol>
-        <ToDoInformation v-for="(todo,index) in toDos" v-bind:key="index" v-bind:value="todo"
-                         :toDo="todo"
-                         v-on:click="changeItem(index,$event)">
-        </ToDoInformation>
+        <item-todo v-for="(todo,index) in toDos" :key="index" :value="todo"
+                   :toDo="todo"
+                   @click="changeItem(index,$event)">
+        </item-todo>
 
 
       </ol>
-      <div id="filters">
-        <button v-for="(filter,i) in filters"
-                :key="i" :value="filter"
-                :class="['btnFilter', { selected: choiceBtn === filter }]"
-                @click=" clickFilterButton(filter)">{{filter}}
-        </button>
+      <div id="button">
+        <div id="filter">
+
+            <button v-for="(filter,i) in filters"
+                    :key="i" :value="filter"
+                    :class="['btnFilter', { selected: choiceBtn === filter }]"
+                    @click=" clickFilterButton(filter)">{{filter}}
+            </button>
+        </div>
       </div>
 
     </div>
@@ -25,12 +28,12 @@
 </template>
 
 <script>
-  import ToDoInformation from "./StatusInfo"
+  import itemTodo from "./item-todo"
 
   export default {
     name: "ListCreation",
     components: {
-      ToDoInformation
+      itemTodo
     },
     data() {
       return {
@@ -42,6 +45,11 @@
     },
     methods: {
       addStatus() {
+        if (this.toDoInfo === '')
+        {
+          alert("input can not null");
+          return;
+        }
         let todo = {
           information: this.toDoInfo,
           status: false
@@ -73,12 +81,5 @@
 </script>
 
 <style>
-  input {
-    margin-left: -150px;
-  }
 
-  button {
-    margin: 10px;
-    font-color: blue
-  }
 </style>

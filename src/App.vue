@@ -1,15 +1,18 @@
 <template>
-  <div id="app">
-    <ToDoList></ToDoList>
+  <div id="app" class="container">
+    <Header></Header>
+   <ListCreation></ListCreation>
   </div>
 </template>
 
 <script>
-  import ToDoList from "./components/TodoList"
+  import Header from "./components/Header"
+  import ListCreation from "./components/ListCreation"
 export default {
   name: 'App',
   components:{
-    ToDoList
+    ListCreation,
+    Header
   }
 }
 </script>
