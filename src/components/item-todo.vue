@@ -1,8 +1,8 @@
 <template>
   <div>
-    <li><input type="checkbox" :checked="toDo.status" v-model="toDo.status" @change="checkChange" >
+    <li><input type="checkbox" :checked="toDo.status" v-model="toDo.status"  >
       <span :class="{ checked: toDo.status }">
-        {{toDo.information}} - {{toDo.status}}
+        {{toDo.information}}
       </span>
     </li>
   </div>
@@ -14,19 +14,8 @@
     props: {
       toDo: Object
     },
-    methods: {
-
-      checkChange() {
-        this.$emit('change');
-      }
-
-    }
   }
 </script>
 
 <style>
-  label {
-    margin-left: -210px;
-    font-size: 24px;
-  }
 </style>

@@ -1,30 +1,29 @@
-<template xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<template xmlns:v-on="http://www.w3.org/1999/xhtml">
   <div>
     <input class="input-text" id="inputInfo" type="text" v-model="toDoInfo">
-    <button id="add" v-on:click="addStatus()">Add</button>
+    <button id="button" v-on:click="addToDoItem()">Add</button>
 
     <div>
       <ol>
         <item-todo v-for="(todo,index) in toDos" :key="index" :value="todo"
                    :toDo="todo"
-                   @click="changeItem(index,$event)">
+                   @click="changeItem(todo)">
         </item-todo>
-
-
       </ol>
-      <div id="button">
-        <div id="filter">
-
-            <button v-for="(filter,i) in filters"
-                    :key="i" :value="filter"
-                    :class="['btnFilter', { selected: choiceBtn === filter }]"
-                    @click=" clickFilterButton(filter)">{{filter}}
-            </button>
-        </div>
+    </div>
+    <div id="filters">
+      <div class="filter">
+          <button v-for="(filter,i) in filters"
+                  :key="i" :value="filter"
+                  :filter="filter"
+                  :class="['btnFilter', { selected: choiceBtn === filter }]"
+                  @click=" clickFilterButton(filter)">{{filter}}
+          </button>
       </div>
-
     </div>
   </div>
+
+
 </template>
 
 <script>
@@ -38,43 +37,46 @@
     data() {
       return {
         toDoInfo: '',
-        todoList: [],
+        todoId: 0,
         choiceBtn: 'All',
         filters: ['All', 'Active', 'Complete']
       }
     },
     methods: {
-      addStatus() {
-        if (this.toDoInfo === '')
-        {
+      addToDoItem() {
+        if (this.toDoInfo === '') {
           alert("input can not null");
           return;
         }
         let todo = {
           information: this.toDoInfo,
-          status: false
+          status: false,
+          todoId: this.todoId++
         };
-        this.todoList.push(todo);
+        this.$store.commit('addTodoItem', todo);
         this.toDoInfo = '';
       },
       clickFilterButton(filter) {
         this.choiceBtn = filter;
       },
-      changeItem(index, item) {
-        this.$set(this.todoList, index, item);
+      changeItem(item) {
+        this.$store.commit('updateItem', {
+          item: item
+        });
       }
     },
     computed: {
       toDos() {
         switch (this.choiceBtn) {
           case 'All':
-            return Array.from(this.todoList);
+            return this.$store.getters.getAllTodoItems;
           case 'Active':
-            return this.todoList.filter(todo => !todo.status);
-          case 'Complete':
-            return this.todoList.filter(todo => todo.status);
+            return this.$store.getters.getActiveTodoItems;
+          case "Complete":
+            return this.$store.getters.getCompleteTodoItems;
+          default:
+            return this.$store.getters.getAllTodoItems;
         }
-        return this.todoList;
       }
     },
   }
