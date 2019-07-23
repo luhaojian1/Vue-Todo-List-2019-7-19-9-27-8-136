@@ -13,6 +13,9 @@ export default {
   components:{
     ListCreation,
     Header
+  },
+  mounted() {
+    this.$store.dispatch('loadToDoItem');
   }
 }
 </script>

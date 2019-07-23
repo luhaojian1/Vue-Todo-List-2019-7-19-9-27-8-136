@@ -39,11 +39,11 @@
           return;
         }
         let todo = {
-          information: this.toDoInfo,
-          status: false,
-          todoId: this.todoId++
+          content: this.toDoInfo,
+          completed: false,
+          id: this.$store.state.todoItems.size() + 1
         };
-        this.$store.commit('addTodoItem', todo);
+        this.$store.dispatch('addTodoItem', todo);
         this.toDoInfo = '';
       },
       changeItem(item) {

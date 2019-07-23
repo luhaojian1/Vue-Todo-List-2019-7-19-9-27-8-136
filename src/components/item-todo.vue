@@ -1,12 +1,12 @@
 <template>
   <div>
-    <li><input type="checkbox" :checked="toDo.status" v-model="toDo.status">
-      <span :class="{ checked: toDo.status }"
+    <li><input type="checkbox" :checked="toDo.completed" v-model="toDo.completed">
+      <span :class="{ checked: toDo.completed }"
             :contenteditable="editable"
             @dblclick="setEditable(true)"
             @keypress.enter="onEnterPress"
             ref="text">
-        {{toDo.information}}
+        {{toDo.content}}
       </span>
     </li>
   </div>
@@ -29,7 +29,7 @@
       },
       onEnterPress() {
         this.setEditable(false);
-        this.toDo.information = this.$refs.text.innerText;
+        this.toDo.content = this.$refs.text.innerText;
 
       }
     }

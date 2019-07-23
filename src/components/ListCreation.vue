@@ -48,12 +48,12 @@
           alert("input can not null");
           return;
         }
-        let todo = {
-          information: this.toDoInfo,
-          status: false,
-          todoId: this.todoId++
-        };
-        this.$store.commit('addTodoItem', todo);
+
+        this.$store.dispatch('addTodoItem', {
+          id: this.todoId++,
+          content: this.toDoInfo,
+          completed: false
+        });
         this.toDoInfo = '';
       },
       clickFilterButton(filter) {
