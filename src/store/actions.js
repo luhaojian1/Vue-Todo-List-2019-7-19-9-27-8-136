@@ -15,10 +15,17 @@ const actions = {
     axios.get(url)
       .then(response => {
         console.log(response.data);
-        commit('loadTodoItem', {
-          item: response.data
-        })
+        commit('loadTodoItem', {item: response.data})
       })
+  },
+  updateItem({commit}, item) {
+    axios.put(`${url}/${item.id}`, item)
+      .then(response => {
+        commit('updateTodoItem', response.data);
+      })
+      .catch(error => {
+        console.log(error)
+      });
   }
 };
 export default actions;

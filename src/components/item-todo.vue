@@ -1,12 +1,12 @@
 <template>
   <div>
-    <li><input type="checkbox" :checked="toDo.completed" v-model="toDo.completed">
-      <span :class="{ checked: toDo.completed }"
+    <li><input type="checkbox" :checked="todo.completed" v-model="todo.completed" @change="changeItem">
+      <span :class="{ checked: todo.completed }"
             :contenteditable="editable"
             @dblclick="setEditable(true)"
             @keypress.enter="onEnterPress"
             ref="text">
-        {{toDo.content}}
+        {{todo.content}}
       </span>
     </li>
   </div>
@@ -20,7 +20,12 @@
     },
     data() {
       return {
-        editable: false
+        editable: false,
+        todo: {
+          id: this.toDo.id,
+          content: this.toDo.content,
+          completed: this.toDo.completed
+        }
       }
     },
     methods: {
@@ -29,8 +34,11 @@
       },
       onEnterPress() {
         this.setEditable(false);
-        this.toDo.content = this.$refs.text.innerText;
-
+        this.todo.content = this.$refs.text.innerText;
+        this.$store.dispatch('updateItem', this.todo);
+      },
+      changeItem() {
+        this.$store.dispatch('updateItem', this.todo);
       }
     }
   }

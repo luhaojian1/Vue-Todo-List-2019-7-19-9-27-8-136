@@ -4,7 +4,6 @@
       <button v-for="(filter,i) in filters"
               :key="i" :value="filter"
               :filter="filter"
-              :class="['btnFilter', { selected: choiceBtn === filter }]"
               @click=" clickFilterButton(filter)">{{filter}}
       </button>
     </div>

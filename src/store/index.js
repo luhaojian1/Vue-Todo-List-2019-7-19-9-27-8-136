@@ -8,7 +8,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     todoItems: [],
-    index: 0
+    choiceBtn: 'All'
   },
   getters,
   mutations,

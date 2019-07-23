@@ -2,11 +2,14 @@ const mutations = {
   addTodoItem(state, item) {
     state.todoItems.push(item);
   },
-  updateItem(state, payLoad) {
-    state.todoItems[payLoad.item.id] = payLoad.item;
+  updateTodoItem(state, item) {
+    state.todoItems[item.id - 1] = item;
   },
   loadTodoItem(state, payload) {
-    this.state.todoItems[payload.item.id] = payload.item;
+    state.todoItems = payload.item;
+  },
+  updateChoiceBtn(state, filter) {
+    state.choiceBtn = filter;
   }
 };
 export default mutations;

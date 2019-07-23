@@ -1,16 +1,16 @@
-<template>
+<template xmlns:v-on="http://www.w3.org/1999/xhtml">
+  <div>
   <input class="input-text" id="inputInfo" type="text" v-model="toDoInfo">
-  <button id="button" v-on:click="addToDoItem()">Add</button>
+    <button id="button" v-on:click="addToDoItem">Add</button>
+  </div>
 </template>
 
 <script>
     export default {
-      name: "todo_adder",
+      name: "todo-adder",
       data() {
         return {
           toDoInfo: '',
-          todoId: 0,
-
         }
       },
       methods: {
@@ -19,18 +19,17 @@
             alert("input can not null");
             return;
           }
-          let todo = {
-            information: this.toDoInfo,
-            status: false,
-            todoId: this.todoId++
-          };
-          this.$store.commit('addTodoItem', todo);
+          this.$store.dispatch('addTodoItem', {
+            id: this.$store.getters.getItemsLength + 1,
+            content: this.toDoInfo,
+            completed: false
+          });
           this.toDoInfo = '';
         },
       }
     }
 </script>
 
-<style scoped>
+<style>
 
 </style>
