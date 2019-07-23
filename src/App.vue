@@ -1,10 +1,5 @@
 <template>
-  <div id="app" class="container">
-    <Header></Header>
-    <todoAdder></todoAdder>
-   <ListCreation></ListCreation>
-    <BtnFilters></BtnFilters>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>

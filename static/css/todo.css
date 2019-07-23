@@ -5,15 +5,29 @@ body {
   background: #ccc;
 }
 
-.container{
+.main-container {
   padding: 20px;
   width: 400px;
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 20px;
+  background: white;
+  border-radius: 5px;
+}
+.container{
+  padding: 20px;
+  width: 400px;
+  margin-left: 150px;
   background: white;
   border-radius: 5px;
 }
 
+.home {
+  padding: 20px;
+  width: 130px;
+  margin-left: 20px;
+  background: cadetblue;
+  border-radius: 5px;
+}
 .input-text{
   width: 70%;
 }

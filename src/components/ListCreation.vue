@@ -25,7 +25,7 @@
 
     computed: {
       toDos() {
-        return this.$store.getters.getTodoItems(this.$store.getters.getChoiceBtn);
+        return this.$store.getters.getTodoItems;
       }
     },
   }
