@@ -16,8 +16,8 @@ body {
 .container{
   padding: 20px;
   width: 400px;
-  margin-left: 150px;
-  background: white;
+  margin: 0 auto;
+  background: greenyellow;
   border-radius: 5px;
 }
 
@@ -25,7 +25,7 @@ body {
   padding: 20px;
   width: 130px;
   margin-left: 20px;
-  background: cadetblue;
+  background: bisque;
   border-radius: 5px;
 }
 .input-text{

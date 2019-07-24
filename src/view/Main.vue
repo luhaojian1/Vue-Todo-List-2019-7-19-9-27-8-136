@@ -1,12 +1,15 @@
 <template>
   <div id="main" class="main-container">
-    <div>
+    <div class="container">
+      <div style="margin: 100px">
+        <a-avatar size="large" icon="user"/>
+      </div>
+
       <label for="name"><input id="name" type="text" placeholder="请输入姓名" v-model="userName"></label>
-    </div>
-    <div>
-      <button id="start" @click="enterHome">开始使用</button>
+      <a-button type="primary" @click="enterHome">Enter</a-button>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -23,7 +26,7 @@
           alert(`input can not be null`);
           return;
         }
-        this.$router.push({path: `/home/todoList`})
+        this.$router.push(`/home/todoList`);
       }
     }
   }

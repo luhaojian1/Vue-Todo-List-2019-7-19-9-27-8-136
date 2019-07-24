@@ -23,7 +23,7 @@
       itemTodo
     },
     computed: {
-      toDos() {
+      toDos: function () {
         return this.$store.getters.getTodoItems;
       }
     },

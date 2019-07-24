@@ -12,12 +12,15 @@ const profile = Profile;
 
 Vue.use(Router);
 const routes = [
-  {path: '/', component: main},
+  {path: '/', name: 'main', component: main},
   {
-    path: '/home', component: home,
+    path: '/home',
+    name: 'home',
+    component: home,
+    redirect: 'todoList',
     children: [
-      {path: '/home/todoList', component: todoList},
-      {path: '/home/profile', component: profile},
+      {path: 'todoList', name: 'todoList', component: todoList},
+      {path: 'profile', name: 'profile', component: profile},
     ]
   }
 ];

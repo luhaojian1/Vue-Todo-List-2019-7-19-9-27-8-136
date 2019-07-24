@@ -8,7 +8,7 @@
             ref="text">
         {{toDo.content}}
       </span>
-      <button @click="deleteItem(toDo.id)">删除</button>
+      <a-button type="danger" @click="deleteItem(toDo.id)">删除</a-button>
     </li>
   </div>
 </template>

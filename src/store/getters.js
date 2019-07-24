@@ -12,6 +12,5 @@ const getters = {
         return state.todoItems;
     }
   },
-  getChoiceBtn: state => state.choiceBtn,
 };
 export default getters;
