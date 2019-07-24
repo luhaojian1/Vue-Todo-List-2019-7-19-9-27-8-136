@@ -1,5 +1,5 @@
 <template>
-  <div id="home" class="container">
+  <div id="home" class="todoList-container">
     <Header></Header>
     <todoAdder></todoAdder>
     <ListCreation></ListCreation>

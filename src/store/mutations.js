@@ -18,6 +18,9 @@ const mutations = {
     let index = state.todoItems.findIndex(item => item.id === todoItemId);
     state.todoItems.splice(index, 1);
   },
+  setUser(state, user) {
+    state.user = user;
+  }
 };
 
 

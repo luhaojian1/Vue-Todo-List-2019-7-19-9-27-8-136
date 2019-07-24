@@ -1,5 +1,4 @@
 const getters = {
-
   getTodoItems: state => {
     switch (state.choiceBtn) {
       case 'All':
@@ -12,5 +11,6 @@ const getters = {
         return state.todoItems;
     }
   },
+  getUser: state => state.user,
 };
 export default getters;

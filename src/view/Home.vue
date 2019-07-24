@@ -1,12 +1,11 @@
 <template>
-  <div>
+  <div style="height: 100%">
     <a-layout id="components-layout-demo-custom-trigger">
-
       <a-layout-header style="background: black; padding: 0">
         <a-menu
           theme="dark"
           mode="horizontal"
-          :defaultSelectedKeys="['2']"
+          :defaultSelectedKeys="['0']"
           :style="{ lineHeight: '64px' }"
         >
           <a-menu-item key="1">
@@ -17,8 +16,9 @@
               </a-button>
             </a-button-group>
           </a-menu-item>
-          <a-menu-item key="2" type="right">
+          <a-menu-item key="2" type="right" style="margin-left: 78%">
             <a-icon type="user"/>
+            hi,{{userName}}
           </a-menu-item>
 
         </a-menu>
@@ -32,11 +32,11 @@
           <div class="logo"/>
           <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['1']">
             <a-menu-item key="1">
-              <a-icon type="user"/>
+              <a-icon type="folder" theme="filled"></a-icon>
               <span> <router-link to="/home/todoList">TodoList列表</router-link></span>
             </a-menu-item>
             <a-menu-item key="2">
-              <a-icon type="video-camera"/>
+              <a-icon type="user"/>
               <span> <router-link to="/home/profile">我的</router-link></span>
             </a-menu-item>
           </a-menu>
@@ -60,8 +60,8 @@
         userName: ''
       }
     },
-    beforeMount() {
-      this.userName = this.$route.params.userName
+    mounted() {
+      this.userName = this.$store.getters.getUser;
     },
     methods: {
       callBack() {
