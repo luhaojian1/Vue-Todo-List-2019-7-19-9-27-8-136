@@ -5,12 +5,12 @@
         <a-menu
           theme="dark"
           mode="horizontal"
-          :defaultSelectedKeys="['0']"
+          :defaultSelectedKeys="['1']"
           :style="{ lineHeight: '64px' }"
         >
           <a-menu-item key="1">
             <a-button-group>
-              <a-button type="primary" @click="callBack">
+              <a-button type="primary" @click="backHome">
                 <a-icon type="left"/>
                 back
               </a-button>
@@ -63,13 +63,17 @@
     mounted() {
       this.userName = this.$store.getters.getUser;
     },
+    beforeRouteLeave(to, from, next) {
+      const isBack = window.confirm("go back main?");
+      if (isBack) {
+        next()
+      } else {
+        next(false)
+      }
+    },
     methods: {
-      callBack() {
-        let isBack = window.confirm("back?");
-        if (isBack) {
+      backHome() {
           this.$router.push('/');
-        }
-
       },
     }
   }
