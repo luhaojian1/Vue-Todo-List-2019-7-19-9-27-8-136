@@ -1,13 +1,14 @@
 <template>
   <div>
-    <li><input type="checkbox" :checked="todo.completed" v-model="todo.completed" @change="changeItem">
-      <span :class="{ checked: todo.completed }"
+    <li><input type="checkbox" :checked="toDo.completed" @change="changeItem(toDo.completed)">
+      <span :class="{ checked: toDo.completed }"
             :contenteditable="editable"
             @dblclick="setEditable(true)"
             @keypress.enter="onEnterPress"
             ref="text">
-        {{todo.content}}
+        {{toDo.content}}
       </span>
+      <button @click="deleteItem(toDo.id)">删除</button>
     </li>
   </div>
 </template>
@@ -21,11 +22,6 @@
     data() {
       return {
         editable: false,
-        todo: {
-          id: this.toDo.id,
-          content: this.toDo.content,
-          completed: this.toDo.completed
-        }
       }
     },
     methods: {
@@ -34,11 +30,23 @@
       },
       onEnterPress() {
         this.setEditable(false);
-        this.todo.content = this.$refs.text.innerText;
-        this.$store.dispatch('updateItem', this.todo);
+        let content = this.$refs.text.innerText;
+        this.$store.dispatch('updateItem', {
+          id: this.toDo.id,
+          completed: this.toDo.completed,
+          content: content
+        });
       },
-      changeItem() {
-        this.$store.dispatch('updateItem', this.todo);
+      changeItem(completed) {
+        console.log(completed);
+        this.$store.dispatch('updateItem', {
+          id: this.toDo.id,
+          completed: !completed,
+          content: this.toDo.content
+        });
+      },
+      deleteItem(id) {
+        this.$store.dispatch('deleteItem', id);
       }
     }
   }

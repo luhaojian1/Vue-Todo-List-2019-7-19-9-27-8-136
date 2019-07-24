@@ -1,17 +1,17 @@
 const getters = {
 
   getTodoItems: state => {
-    if (state.choiceBtn === 'All') {
-      return state.todoItems;
-    } else if (state.choiceBtn === 'Active') {
-      return Array.from(state.todoItems).filter(todo => !todo.completed);
-    } else if (state.choiceBtn === 'Complete') {
-      return state => Array.from(state.todoItems).filter(todo => todo.completed);
+    switch (state.choiceBtn) {
+      case 'All':
+        return state.todoItems;
+      case 'Active':
+        return state.todoItems.filter(item => !item.completed);
+      case 'Complete':
+        return state.todoItems.filter(item => item.completed);
+      default:
+        return state.todoItems;
     }
   },
-  getActiveTodoItem: state => state.todoItems.filter(todo => !todo.completed),
-  getCompleteTodoItem: state => state.todoItems.filter(todo => todo.completed),
-  getItemsLength: state => state.todoItems.length,
-  getChoiceBtn: state => state.choiceBtn
+  getChoiceBtn: state => state.choiceBtn,
 };
 export default getters;

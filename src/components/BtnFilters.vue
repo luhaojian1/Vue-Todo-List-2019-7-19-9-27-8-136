@@ -16,7 +16,6 @@
     name: "BtnFilters",
     data() {
       return {
-        choiceBtn: this.$store.state.choiceBtn,
         filters: ['All', 'Active', 'Complete']
       }
     },

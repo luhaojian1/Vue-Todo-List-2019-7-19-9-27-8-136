@@ -4,8 +4,8 @@
       <button @click="callBack">×</button>
       <h2>{{ userName }}</h2>
       <ul>
-        <li><a href="javaScript:void" @click="enterTodoList">TodoList</a></li>
-        <li><a href="javaScript:void" @click="enterProfile">Profile</a></li>
+        <li><a href="" @click="enterTodoList">TodoList</a></li>
+        <li><a href="#" @click="enterProfile">Profile</a></li>
       </ul>
     </nav>
     <router-view id="mainContent"></router-view>
@@ -25,13 +25,19 @@
     },
     methods: {
       callBack() {
-        this.$router.push('/')
+        let isBack = window.confirm("back?");
+        if (isBack) {
+          this.$router.push('/');
+        }
+
       },
       enterTodoList() {
-        this.$router.push(this.userName)
+        this.$router.push({path: '/home/todoList'});
+        return;
       },
       enterProfile() {
-        this.$router.push(this.userName + '/profile')
+        this.$router.push({path: '/home/profile'})
+        return;
       }
     }
   }

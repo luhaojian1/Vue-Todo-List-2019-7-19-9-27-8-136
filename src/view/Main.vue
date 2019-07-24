@@ -23,7 +23,7 @@
           alert(`input can not be null`);
           return;
         }
-        this.$router.push({path: `/home/${this.userName}`})
+        this.$router.push({path: `/home/todoList`})
       }
     }
   }

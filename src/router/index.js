@@ -14,15 +14,15 @@ Vue.use(Router);
 const routes = [
   {path: '/', component: main},
   {
-    path: '/home/:userName', component: home,
+    path: '/home', component: home,
     children: [
-      {path: '/home/:userName', component: todoList},
-      {path: '/home/:userName/profile', component: profile},
+      {path: '/home/todoList', component: todoList},
+      {path: '/home/profile', component: profile},
     ]
   }
 ];
 
 const router = new Router({
-  routes
+  routes: routes
 });
 export default router;
